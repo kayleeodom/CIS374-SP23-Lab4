@@ -14,7 +14,13 @@ namespace Lab4
         }
 
         // TODO
-        public char? EndingLetter { get; }
+        public char? EndingLetter { 
+            get
+            {
+                // if Persons is SORTED
+                return Persons[Count - 1].FirstName[Count - 1];
+            }
+        }
 
         public int Count => Persons.Count;
 
