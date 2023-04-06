@@ -13,7 +13,7 @@ namespace Lab4
             }
         }
 
-        // TODO
+        // Done
         public char? EndingLetter { 
             get
             {
@@ -61,29 +61,45 @@ namespace Lab4
         // TODO
         public static List<PersonGroup> GeneratePersonGroups(List<Person> persons, int distance)
         {
-            var personGroups = new List<PersonGroup>();
+           var personGroups = new List<PersonGroup>();
+            
 
-            // This isn't correct code. 
-            // It's is just a sample of how to interact with the classes.
-            var group1 = new PersonGroup();
-            var group2 = new PersonGroup();
+            // 1) sort the list of persons
+            // persons.Sort()
+            personGroups.Sort();
 
-            foreach (var person in persons)
+            // current group = new person group
+            var currentGroup = new PersonGroup();
+
+            // 2) repeatedly add next person if they are within distance/ otherwise make new group
+            // foreach person in persons
+            foreach (var p in persons)
             {
-                if (person.FirstName.StartsWith("K"))
+                // if(current group == empty) add first person
+                if (currentGroup.Count == 0)
                 {
-                    group1.Persons.Add(person);
+                    currentGroup.Persons.Add(p);
                 }
+                // else if distance(person, current group[0]) <= distance
+                else if (p.Distance(p) <= distance)
+                {
+                    // add person
+                    currentGroup.Persons.Add(p);
+                }
+                // else
                 else
                 {
-                    group2.Persons.Add(person);
+                    // add the current group to List of PersonGroups
+                    personGroups.Add(currentGroup);
                 }
             }
-
-            personGroups.Add(group1);
-            personGroups.Add(group2);
-
+            
             return personGroups;
+
+
+            // make new group
+            // add person to new group
+
         }
 
     }
