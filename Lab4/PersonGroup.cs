@@ -112,7 +112,7 @@ namespace Lab4
 
             }
 
-            Console.WriteLine(personsGroups);
+            //Console.WriteLine(personsGroups);
             return personsGroups;
 
         }
