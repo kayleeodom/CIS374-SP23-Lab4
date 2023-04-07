@@ -1,5 +1,7 @@
 ﻿
 
+using System.ComponentModel;
+
 namespace Lab4
 {
     public class PersonGroup
@@ -61,45 +63,57 @@ namespace Lab4
         // TODO
         public static List<PersonGroup> GeneratePersonGroups(List<Person> persons, int distance)
         {
-           var personGroups = new List<PersonGroup>();
+            // creates a new group to put the various sub groups of current group
+            //var personGroups = new List<PersonGroup>();
+            List<PersonGroup> personsGroups = new List<PersonGroup>();
+         
             
-
             // 1) sort the list of persons
             // persons.Sort()
-            personGroups.Sort();
+            persons.Sort();
 
             // current group = new person group
+            // current group you are adding names into
             var currentGroup = new PersonGroup();
 
             // 2) repeatedly add next person if they are within distance/ otherwise make new group
-            // foreach person in persons
+            // foreach person in persons (for each person in the list of persons)
+            // p = person
             foreach (var p in persons)
             {
                 // if(current group == empty) add first person
                 if (currentGroup.Count == 0)
                 {
                     currentGroup.Persons.Add(p);
+                    
                 }
                 // else if distance(person, current group[0]) <= distance
-                else if (p.Distance(p) <= distance)
+                else if (p.Distance(currentGroup[0]) <= distance)
                 {
                     // add person
                     currentGroup.Persons.Add(p);
                 }
-                // else
+                // add the current group to List of PersonGroups
                 else
                 {
-                    // add the current group to List of PersonGroups
-                    personGroups.Add(currentGroup);
+
+                    //if (p.Distance(currentGroup[0]) >= distance)
+                    //{
+
+                    //}
+                    personsGroups.Add(currentGroup);
+                    //return personsGroups;
+                    // make new group
+                    var newCurrentGroup = new PersonGroup();
+                    currentGroup = newCurrentGroup;
+                    // add person to new group
+                    newCurrentGroup.Persons.Add(p);
                 }
+
             }
 
-            Console.WriteLine(personGroups);
-            return personGroups;
-
-
-            // make new group
-            // add person to new group
+            Console.WriteLine(personsGroups);
+            return personsGroups;
 
         }
 

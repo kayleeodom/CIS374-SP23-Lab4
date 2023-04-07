@@ -61,16 +61,16 @@ namespace Lab4
             //char c = 'a';   // this person
             //char d = 'z';   // given person
 
-            //char c = (char)other.FirstName[1];
+            //char c = (char)other.FirstName[0];
             char c = other.FirstName[0];
-            //char d = (char)this.FirstName[1];
-            char d = this.FirstName[1];
+            //char d = (char)this.FirstName[0];
+            char d = this.FirstName[0];
 
             // find difference and has to be always positive
             int difference = Math.Abs((char.ToLower(c) - char.ToLower(d)));
             //int difference = Math.Abs(c - d);
 
-            Console.WriteLine( difference );
+            //Console.WriteLine( difference );
             return difference;
         }
 
