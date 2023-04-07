@@ -45,24 +45,32 @@ namespace Lab4
         /// </returns>
         public int Distance(Person other)
         {
+
+            
+
             // check that other isn't null
             if (other == null)
             {
                 throw new NullReferenceException("Other Person must not be null");
             }
+            //return difference;
 
 
             // compute distance between first letters of first name
 
-            //char c = '';
-            //char d = '';
+            //char c = 'a';   // this person
+            //char d = 'z';   // given person
 
-            char c = char.ToUpper(FirstName[0]);
-            char d = char.ToUpper(FirstName[0]);
+            //char c = (char)other.FirstName[1];
+            char c = other.FirstName[0];
+            //char d = (char)this.FirstName[1];
+            char d = this.FirstName[1];
 
-            int difference = Math.Abs( c - d );
+            // find difference and has to be always positive
+            int difference = Math.Abs((char.ToLower(c) - char.ToLower(d)));
+            //int difference = Math.Abs(c - d);
 
-
+            Console.WriteLine( difference );
             return difference;
         }
 

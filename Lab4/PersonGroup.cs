@@ -93,7 +93,8 @@ namespace Lab4
                     personGroups.Add(currentGroup);
                 }
             }
-            
+
+            Console.WriteLine(personGroups);
             return personGroups;
 
 
